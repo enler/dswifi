@@ -53,12 +53,16 @@ const char * ASSOCSTATUS_STRINGS[] = {
 
 
 void sgIP_IntrWaitEvent() {
+	
  //  __asm( ".ARM\n swi 0x060000\n" );
+ /*
 	int i,j;
 	j=0;
 	for(i=0;i<20000;i++) {
 		j+=i;
 	}
+	*/
+	OS_Sleep(1);
 }
 
 void * sgIP_malloc(int size) __attribute__((weak));
@@ -197,8 +201,8 @@ void wHeapFree(void * data) {
 
 
 
-void * sgIP_malloc(int size) { return wHeapAlloc(size); }
-void sgIP_free(void * ptr) { wHeapFree(ptr); }
+void * sgIP_malloc(int size) { return malloc(size); }
+void sgIP_free(void * ptr) { free(ptr); }
 
 
 #endif
@@ -1037,7 +1041,7 @@ bool Wifi_InitDefault(bool useFirmwareSettings) {
 //---------------------------------------------------------------------------------
 	fifoSetValue32Handler(FIFO_DSWIFI,  wifiValue32Handler, 0);
 
-	u32 wifi_pass = Wifi_Init(WIFIINIT_OPTION_USELED);
+	u32 wifi_pass = Wifi_Init(WIFIINIT_OPTION_USECUSTOMALLOC);
 
 	if(!wifi_pass) return false;
 

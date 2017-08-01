@@ -109,22 +109,22 @@ typedef struct SGIP_TCP_SYNCOOKIE {
 extern "C" {
 #endif
 
-	extern void sgIP_TCP_Init();
-   extern void sgIP_TCP_Timer();
+	extern void __attribute__((weak)) sgIP_TCP_Init();
+   extern void __attribute__((weak)) sgIP_TCP_Timer();
 
-	extern int sgIP_TCP_ReceivePacket(sgIP_memblock * mb, unsigned long srcip, unsigned long destip);
-	extern int sgIP_TCP_SendPacket(sgIP_Record_TCP * rec, int flags, int datalength); // data sent is taken directly from the TX fifo.
-   extern int sgIP_TCP_SendSynReply(int flags,unsigned long seq, unsigned long ack, unsigned long srcip, unsigned long destip, int srcport, int destport, int windowlen);
+	extern int __attribute__((weak)) sgIP_TCP_ReceivePacket(sgIP_memblock * mb, unsigned long srcip, unsigned long destip);
+	extern int __attribute__((weak)) sgIP_TCP_SendPacket(sgIP_Record_TCP * rec, int flags, int datalength); // data sent is taken directly from the TX fifo.
+   extern int __attribute__((weak)) sgIP_TCP_SendSynReply(int flags,unsigned long seq, unsigned long ack, unsigned long srcip, unsigned long destip, int srcport, int destport, int windowlen);
 
-	extern sgIP_Record_TCP * sgIP_TCP_AllocRecord();
-	extern void sgIP_TCP_FreeRecord(sgIP_Record_TCP * rec);
-	extern int sgIP_TCP_Bind(sgIP_Record_TCP * rec, int srcport, unsigned long srcip);
-   extern int sgIP_TCP_Listen(sgIP_Record_TCP * rec, int maxlisten);
-   extern sgIP_Record_TCP * sgIP_TCP_Accept(sgIP_Record_TCP * rec);
-	extern int sgIP_TCP_Close(sgIP_Record_TCP * rec);
-	extern int sgIP_TCP_Connect(sgIP_Record_TCP * rec, unsigned long destip, int destport);
-	extern int sgIP_TCP_Send(sgIP_Record_TCP * rec, const char * datatosend, int datalength, int flags);
-	extern int sgIP_TCP_Recv(sgIP_Record_TCP * rec, char * databuf, int buflength, int flags);
+	extern sgIP_Record_TCP * __attribute__((weak)) sgIP_TCP_AllocRecord();
+	extern void __attribute__((weak)) sgIP_TCP_FreeRecord(sgIP_Record_TCP * rec);
+	extern int __attribute__((weak)) sgIP_TCP_Bind(sgIP_Record_TCP * rec, int srcport, unsigned long srcip);
+   extern int __attribute__((weak)) sgIP_TCP_Listen(sgIP_Record_TCP * rec, int maxlisten);
+   extern sgIP_Record_TCP * __attribute__((weak)) sgIP_TCP_Accept(sgIP_Record_TCP * rec);
+	extern int __attribute__((weak)) sgIP_TCP_Close(sgIP_Record_TCP * rec);
+	extern int __attribute__((weak)) sgIP_TCP_Connect(sgIP_Record_TCP * rec, unsigned long destip, int destport);
+	extern int __attribute__((weak)) sgIP_TCP_Send(sgIP_Record_TCP * rec, const char * datatosend, int datalength, int flags);
+	extern int __attribute__((weak)) sgIP_TCP_Recv(sgIP_Record_TCP * rec, char * databuf, int buflength, int flags);
 
 #ifdef __cplusplus
 };

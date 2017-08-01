@@ -70,8 +70,8 @@ extern u32 SLasm_Release(volatile u32 * lockaddr, u32 lockvalue);
 // If for whatever reason you want to ditch SGIP and use your own stack, comment out the following line.
 #define WIFI_USE_TCP_SGIP	1
 
-#define WIFI_RXBUFFER_SIZE	(1024*12)
-#define WIFI_TXBUFFER_SIZE	(1024*24)
+#define WIFI_RXBUFFER_SIZE	(1024*6)
+#define WIFI_TXBUFFER_SIZE	(1024*12)
 #define WIFI_MAX_AP			32
 #define WIFI_MAX_ASSOC_RETRY	30
 #define WIFI_PS_POLL_CONST  2
