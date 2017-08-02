@@ -605,7 +605,7 @@ int Wifi_AssocStatus() {
 						wifi_connect_state=3;
 						WifiData->flags9|=WFLAG_ARM9_NETREADY;
 						sgIP_ARP_SendGratARP(wifi_hw);
-						sgIP_DNS_Record_Localhost();
+						//sgIP_DNS_Record_Localhost();
 						return ASSOCSTATUS_ASSOCIATED;
 					default:
 					case SGIP_DHCP_STATUS_IDLE:
